@@ -8,14 +8,23 @@ SRCDIR   = src
 OBJDIR   = build
 BINDIR   = bin
 
-SOURCES  := $(wildcard $(SRCDIR)/*.c)
-INCLUDES := $(wildcard $(SRCDIR)/*.h)
-OBJECTS  := $(SOURCES:$(SRCDIR)/%.c=$(OBJDIR)/%.o)
+SOURCES := $(wildcard $(SRCDIR)/*.c)
+OBJECTS := $(SOURCES:$(SRCDIR)/%.c=$(OBJDIR)/%.o)
+EMERG_REBOOT_OBJECTS	:= $(OBJDIR)/emerg_reboot.o $(OBJDIR)/sysrq.o $(OBJDIR)/textfile.o
+GETSYSRQ_OBJECTS	:= $(OBJDIR)/getsysrq.o $(OBJDIR)/sysrq.o $(OBJDIR)/textfile.o
 
+default: emerg_reboot sysrq
 
-$(BINDIR)/$(TARGET): $(OBJECTS)
+emerg_reboot: $(BINDIR)/emerg_reboot
+sysrq: $(BINDIR)/getsysrq
+
+$(BINDIR)/emerg_reboot: $(EMERG_REBOOT_OBJECTS)
 	@mkdir -p $(@D)
-	$(LINKER) $(OBJECTS) $(LFLAGS) -o $@
+	$(LINKER) $(EMERG_REBOOT_OBJECTS) $(LFLAGS) -o $@
+
+$(BINDIR)/getsysrq: $(GETSYSRQ_OBJECTS)
+	@mkdir -p $(@D)
+	$(LINKER) $(GETSYSRQ_OBJECTS) $(LFLAGS) -o $@
 
 $(OBJECTS): $(OBJDIR)/%.o : $(SRCDIR)/%.c
 	@mkdir -p $(@D)
