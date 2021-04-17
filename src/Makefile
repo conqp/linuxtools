@@ -1,5 +1,3 @@
-CC = gcc
-
 emerg_reboot: emerg_reboot.o sysrq.o textfile.o
 
 emerg_reboot.o: emerg_reboot.c
