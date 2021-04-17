@@ -10,6 +10,7 @@ BINDIR   = bin
 
 SOURCES := $(wildcard $(SRCDIR)/*.c)
 OBJECTS := $(SOURCES:$(SRCDIR)/%.c=$(OBJDIR)/%.o)
+
 EMERG_REBOOT_OBJECTS	:= $(OBJDIR)/emerg_reboot.o $(OBJDIR)/sysrq.o $(OBJDIR)/textfile.o
 GETSYSRQ_OBJECTS	:= $(OBJDIR)/getsysrq.o $(OBJDIR)/sysrq.o $(OBJDIR)/textfile.o
 
