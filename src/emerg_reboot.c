@@ -32,5 +32,5 @@ int main()
 	if (rc)
 		return rc;
 
-	return sysrq("b");
+	return sysrq('b');
 }

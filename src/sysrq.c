@@ -65,7 +65,7 @@ int ensure_sysrq(bool enabled)
 	return 0;
 }
 
-int sysrq(char *code)
+int sysrq(char code)
 {	
-	return fwrites(SYSRQ_TRIGGER, code);
+	return fwrites(SYSRQ_TRIGGER, &code);
 }

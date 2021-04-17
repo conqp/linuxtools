@@ -26,6 +26,6 @@ int set_sysrq(bool enabled);
 int enable_sysrq();
 int disable_sysrq();
 int ensure_sysrq(bool enabled);
-int sysrq(char *code);
+int sysrq(char code);
 
 #endif
