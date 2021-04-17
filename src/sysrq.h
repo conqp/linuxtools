@@ -22,7 +22,7 @@
 #include <stdbool.h>
 
 bool sysrq_enabled();
-int set_sysrq(bool enabled);
+int set_sysrq(int state);
 int enable_sysrq();
 int disable_sysrq();
 int ensure_sysrq(bool enabled);

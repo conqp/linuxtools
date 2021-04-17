@@ -17,6 +17,7 @@
   along with this library.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include <stdbool.h>
+#include <stdio.h>
 #include <string.h>
 
 #include "textfile.h"
@@ -27,29 +28,31 @@ static char SYSRQ_TRIGGER[] = "/proc/sysrq-trigger";
 
 bool sysrq_enabled()
 {
-	char buf[1];
+	char buf[4];
 	int rc;
 
-	rc = freads(SYSRQ_ENABLE, buf, 1);
+	rc = freads(SYSRQ_ENABLE, buf, 4);
 	if (rc)
 		return false;
 
-	return strcmp(buf, "1");
+	return strcmp(buf, "0\n");
 }
 
-int set_sysrq(bool enabled)
+int set_sysrq(int state)
 {
-	return fwrites(SYSRQ_ENABLE, enabled ? "1" : "0");
+	char value[4];
+	sprintf(value, "%d", state);
+	return fwrites(SYSRQ_ENABLE, value);
 }
 
 int enable_sysrq()
 {
-	return set_sysrq(true);
+	return set_sysrq(1);
 }
 
 int disable_sysrq()
 {
-	return set_sysrq(false);
+	return set_sysrq(0);
 }
 
 int ensure_sysrq(bool enabled)
