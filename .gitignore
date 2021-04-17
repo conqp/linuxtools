@@ -53,3 +53,4 @@ dkms.conf
 
 # Compiled files
 src/emerg_reboot
+src/getsysrq
