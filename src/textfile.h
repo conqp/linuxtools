@@ -19,7 +19,9 @@
 #ifndef TEXTFILE_H
 #define TEXTFILE_H
 
+#include <stdlib.h>
+
 int freads(char *filename, char *buf, size_t size);
-int fwrites(char *filename, char *value);
+int fwrites(char *filename, const char *value);
 
 #endif

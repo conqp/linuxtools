@@ -18,6 +18,7 @@
 */
 #include <errno.h>
 #include <stdio.h>
+#include <stdlib.h>
 
 #include "textfile.h"
 
@@ -34,7 +35,7 @@ int freads(char *filename, char *buf, size_t size)
 	return 0;
 }
 
-int fwrites(char *filename, char *value)
+int fwrites(char *filename, const char *value)
 {
 	FILE *fp;
 
