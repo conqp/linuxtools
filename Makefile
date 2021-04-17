@@ -11,7 +11,6 @@ BINDIR   = bin
 SOURCES  := $(wildcard $(SRCDIR)/*.c)
 INCLUDES := $(wildcard $(SRCDIR)/*.h)
 OBJECTS  := $(SOURCES:$(SRCDIR)/%.c=$(OBJDIR)/%.o)
-rm       = rm -f
 
 
 $(BINDIR)/$(TARGET): $(OBJECTS)
@@ -24,8 +23,8 @@ $(OBJECTS): $(OBJDIR)/%.o : $(SRCDIR)/%.c
 
 .PHONY: clean
 clean:
-	@$(rm) $(OBJECTS)
+	rm -rf $(OBJECTS)
 
 .PHONY: remove
 remove: clean
-	@$(rm) $(BINDIR)/$(TARGET)
+	rm -rf $(BINDIR)/$(TARGET)
