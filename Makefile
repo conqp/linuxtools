@@ -33,8 +33,8 @@ $(OBJECTS): $(OBJDIR)/%.o : $(SRCDIR)/%.c
 
 .PHONY: clean
 clean:
-	rm -rf $(OBJECTS)
+	rm -f $(OBJECTS)
 
 .PHONY: remove
 remove: clean
-	rm -rf $(BINDIR)/$(TARGET)
+	rm -f $(BINDIR)/*
