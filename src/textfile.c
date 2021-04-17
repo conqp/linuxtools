@@ -23,7 +23,6 @@
 
 int freads(char *filename, char *buf, size_t size)
 {
-	int rc;
 	FILE *fp;
 
 	fp = fopen(filename, "r");
@@ -37,14 +36,13 @@ int freads(char *filename, char *buf, size_t size)
 
 int fwrites(char *filename, char *value)
 {
-	int rc;
 	FILE *fp;
 
 	fp = fopen(filename, "w");
 	if (fp == NULL)
 		return -EIO;
 
-	rc = fprintf(fp, value);
+	fprintf(fp, value);
 	fclose(fp);
-	return rc;
+	return 0;
 }
