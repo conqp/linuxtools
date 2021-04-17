@@ -14,7 +14,7 @@ OBJECTS := $(SOURCES:$(SRCDIR)/%.c=$(OBJDIR)/%.o)
 EMERG_REBOOT_OBJECTS	:= $(OBJDIR)/emerg_reboot.o $(OBJDIR)/sysrq.o $(OBJDIR)/textfile.o
 GETSYSRQ_OBJECTS	:= $(OBJDIR)/getsysrq.o $(OBJDIR)/sysrq.o $(OBJDIR)/textfile.o
 
-default: emerg_reboot sysrq
+linuxtools: emerg_reboot sysrq
 
 emerg_reboot: $(BINDIR)/emerg_reboot
 sysrq: $(BINDIR)/getsysrq
