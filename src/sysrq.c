@@ -34,7 +34,7 @@ bool sysrq_enabled()
 	if (rc)
 		return false;
 
-	return buf == "1";
+	return strcmp(buf, "1");
 }
 
 int set_sysrq(bool enabled)
